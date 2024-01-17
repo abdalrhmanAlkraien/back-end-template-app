@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      file: classpath:db/changelog/language/language.yml
+  - include:
+      file: classpath:db/changelog/user/user.yml
+#  - include:
+#      file: classpath:db/changelog/componentModel/component-model.yml
+#  - include:
+#      file: classpath:db/changelog/building-type/building-type.yml
+#  - include:
+#      file: classpath:db/changelog/business-layout/business-layout.yml
+#  - include:
+#      file: classpath:db/changelog/pre-profile/pre-profile.yml

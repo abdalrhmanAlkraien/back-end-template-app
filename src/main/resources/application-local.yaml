@@ -1,0 +1,37 @@
+# Spring properties
+spring:
+  # Database configurations
+  datasource:
+    url: jdbc:h2:./db/energieTechsDB
+    username: sa
+    password: 1234
+    hikari:
+      initialization-fail-timeout: 60000
+      connection-test-query: SELECT 1
+      maximum-pool-size: 10
+  h2:
+    console:
+      enabled: true
+      path: /db-console
+      settings:
+        web-allow-others: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    # The SQL dialect makes Hibernate generate better SQL for the chosen database
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+  # liquibase configurations
+  liquibase:
+    enabled: true
+    drop-first: false
+    default-schema: public
+    change-log: ./db/changelog-master.yaml
+
+aws:
+  accessKey: AKIA6KNRMTUCZ5IVBBF7
+  secretKey: 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
+  bucket: energytech

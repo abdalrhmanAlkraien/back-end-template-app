@@ -1,0 +1,5 @@
+CREATE TABLE LANGUAGE
+(
+    id   VARCHAR PRIMARY KEY,
+    name VARCHAR
+);

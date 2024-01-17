@@ -1,0 +1,92 @@
+# Development profile
+## Custom application properties
+app:
+  version: @project.version@
+  api:
+    version: 'v1'
+  security:
+    jwt:
+      secret: "5s2BCxpNxdI58mAaAllBr/psyu91aCusvXy+kew9ytxQ/zhRtvcZMxVAjmkq8pVkSMA81+9Y0D4W06qGre+hYg=="
+      expiration: 5 #Days
+      refresh-expiration: 14 #Days
+
+# Spring properties
+spring:
+  application:
+    name: EnergieTechs
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  jpa:
+#    defer-datasource-initialization: true
+    open-in-view: false
+    properties:
+      hibernate:
+        generate_statistics: true
+        # Switching on batch insert
+        # Take the time to group inserts by entity, creating larger batches.
+        order_inserts: true
+        order_updates: true
+        # collect inserts in batches of 100
+        jdbc:
+          size: 100
+  profiles:
+    active: dev
+
+# Server configs
+server:
+  port: 8080
+  ## Should be included to show message, if not error message will be empty
+  error:
+    include-message: always
+    include-binding-errors: always
+  servlet:
+    context-path: /api/${app.api.version}
+
+# Application health and information management
+management:
+  info.git:
+    mode: full
+    enabled: true
+  endpoints.web.exposure.include: "*"
+  endpoint:
+    shutdown.enabled: false
+    health.show-details: always
+
+# Logging settings
+logging.level:
+  org:
+    hibernate:
+      SQL: debug
+      type.descriptor.sql.BasicBinder: trace
+    springframework:
+      cache: trace
+      web: debug
+    siriusxi:
+      fa: debug
+  web: debug
+  root: info
+
+# OpenAPI (Swagger) settings
+springdoc:
+  # swagger-ui custom path
+  swagger-ui:
+    path: /doc/index.html
+    operationsSorter: alpha
+    tagsSorter: alpha
+    displayRequestDuration: true
+    syntaxHighlight:
+      theme: arta
+  # /api-docs endpoint custom path
+  api-docs:
+    path: /api-docs
+  # to display the actuator endpoints.
+  show-actuator: false
+
+aws:
+  accessKey: AKIA6KNRMTUCZ5IVBBF7
+  secretKey: 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
+  bucket: energytech

@@ -1,0 +1,59 @@
+# Spring properties
+spring:
+  # Database configurations
+  datasource:
+    url: jdbc:mysql://energyTech-mysql:3306/Energydb?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: EnergyAdmin
+    password: EnergyPassword
+    hikari:
+      initialization-fail-timeout: 60000
+      connection-test-query: SELECT 1
+      maximum-pool-size: 10
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jpa:
+    #    defer-datasource-initialization: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    # The SQL dialect makes Hibernate generate better SQL for the chosen database
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        generate_statistics: true
+        # Switching on batch insert
+        # Take the time to group inserts by entity, creating larger batches.
+        order_inserts: true
+        order_updates: true
+        # collect inserts in batches of 100
+        jdbc:
+          size: 100
+  jpa:
+    hibernate:
+      ddl-auto: update
+    # The SQL dialect makes Hibernate generate better SQL for the chosen database
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+#        storage_engine: innodb
+#        globally_quoted_identifiers: true
+
+
+
+
+  # liquibase configurations
+  liquibase:
+    enabled: false
+    drop-first: true
+    default-schema: public
+    change-log: ./db/changelog-master.yaml
+    url: jdbc:mysql://energyTech-mysql:3306/Energydb?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    user: EnergyAdmin
+    password: EnergyPassword
+    contexts: development
+
+aws:
+  accessKey: AKIA6KNRMTUCZ5IVBBF7
+  secretKey: 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
+  bucket: energytech
+
