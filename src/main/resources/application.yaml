@@ -87,6 +87,6 @@ springdoc:
   show-actuator: false
 
 aws:
-  accessKey: AKIA6KNRMTUCZ5IVBBF7
-  secretKey: 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
-  bucket: energytech
+  accessKey: tt
+  secretKey: tt
+  bucket: tt
