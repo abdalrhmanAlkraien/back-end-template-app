@@ -32,6 +32,6 @@ spring:
     change-log: ./db/changelog-master.yaml
 
 aws:
-  accessKey: AKIA6KNRMTUCZ5IVBBF7
-  secretKey: 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
+  accessKey: tt
+  secretKey: tt
   bucket: energytech
